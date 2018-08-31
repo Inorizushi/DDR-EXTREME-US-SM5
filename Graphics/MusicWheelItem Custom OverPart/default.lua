@@ -1,4 +1,8 @@
 local t = Def.ActorFrame{};
+local lang = "us";
+if THEME:GetCurLanguage() == "ja" then
+	lang = "jp";
+end;
 
 local set;
 
@@ -57,13 +61,28 @@ t[#t+1] = Def.ActorFrame {
         self:y(-6.4)
       end;
 			if params.Label == Nonstoptext then
-				self:Load(THEME:GetPathG("","MusicWheelItem Custom OverPart/Nonstop.png"))
+				self:Load(THEME:GetPathG("","MusicWheelItem Custom OverPart/"..lang.."_Nonstop.png"))
+				if params.HasFocus then
+					shownonstop = 1
+				else
+					shownonstop = 0
+				end;
 			end;
 			if params.Label == Challengetext then
-				self:Load(THEME:GetPathG("","MusicWheelItem Custom OverPart/Challenge.png"))
+				self:Load(THEME:GetPathG("","MusicWheelItem Custom OverPart/"..lang.."_Challenge.png"))
+				if params.HasFocus then
+					showchallenge = 1
+				else
+					showchallenge = 0
+				end;
 			end;
 			if params.Label == Edittext then
-				self:Load(THEME:GetPathG("","MusicWheelItem Custom OverPart/Edit.png"))
+				self:Load(THEME:GetPathG("","MusicWheelItem Custom OverPart/"..lang.."_Edit.png"))
+				if params.HasFocus then
+					showedit = 1
+				else
+					showedit = 0
+				end;
 			end;
 		end;
 	};

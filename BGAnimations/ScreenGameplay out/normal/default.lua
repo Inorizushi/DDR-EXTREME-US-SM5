@@ -1,4 +1,8 @@
 local travelDist = SCREEN_WIDTH*1.5;
+local lang = "us";
+if THEME:GetCurLanguage() == "ja" then
+	lang = "jp";
+end;
 
 local t = Def.ActorFrame{};
 
@@ -97,7 +101,7 @@ t[#t+1] = Def.ActorFrame{
 };
 
 local clearMessageNormal = Def.ActorFrame{
-	LoadActor("cleared")..{
+	LoadActor(lang.."_cleared")..{
 		InitCommand=cmd(CenterX;y,SCREEN_CENTER_Y-6);
 		OnCommand=cmd(diffusealpha,0;sleep,1.05;diffusealpha,1;sleep,0.4;sleep,1.5;linear,0.333;diffusealpha,0);
 	};

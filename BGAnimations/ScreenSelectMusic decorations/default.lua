@@ -1,4 +1,8 @@
 local t = LoadFallbackB();
+local lang = "us";
+if THEME:GetCurLanguage() == "ja" then
+	lang = "jp";
+end;
 
 t[#t+1] = StandardDecorationFromFileOptional("StageDisplay","StageDisplay")
 t[#t+1] = StandardDecorationFromFile("BannerFrame","BannerFrame")
@@ -146,7 +150,16 @@ t[#t+1] = LoadActor("Help")..{
 	AnimateCommand=cmd(diffuseblink;effectcolor1,color("1,1,1,1");effectcolor2,color("0.5,0.5,0.5,1");effectperiod,1.5);
 };
 
-
+if lang == "jp" then
+	t[#t+1] = LoadActor("caption")..{
+		InitCommand=function(self)
+			self:draworder(2)
+			self:xy(SCREEN_CENTER_X-228,SCREEN_CENTER_Y-182);
+		end;
+		OnCommand=cmd(rotationy,90;sleep,0.5;linear,0.2;rotationy,0);
+		OffCommand=cmd(linear,0.2;rotationy,90);
+	};
+end;
 
 t[#t+1] = LoadActor("Warning")..{
 	InitCommand=cmd(draworder,100;CenterX;y,SCREEN_CENTER_Y+100;zoomy,0);

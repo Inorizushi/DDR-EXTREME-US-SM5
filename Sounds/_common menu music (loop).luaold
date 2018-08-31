@@ -1,0 +1,13 @@
+local region;
+local lang = "us";
+if THEME:GetCurLanguage() == "ja" then
+	lang = "jp";
+end;
+
+if lang == "us" then
+  region = "_EXTREME (loop).ogg"
+elseif lang == "jp" then
+  region = "_ChallengeItem (loop).ogg"
+end;
+
+return THEME:GetPathS("",region);

@@ -3,6 +3,8 @@ local group;
 local t = Def.ActorFrame{
   LoadActor("base")..{
     SetMessageCommand=function(self,params)
+      local pt_text = params.Text;
+      local	group = params.Text;
       if params.HasFocus then
         self:x(2);
         self:y(-6.4);
@@ -18,6 +20,11 @@ local t = Def.ActorFrame{
 			local song = params.Song;
 			group = params.Text;
 			local so = GAMESTATE:GetSortOrder();
+      if group then
+        if params.HasFocus then
+					setenv("getgroupname",group);
+				end;
+      end;
 			if so == "SortOrder_Group" then
 				self:settext(group);
 				self:strokecolor(color("#000000"))
